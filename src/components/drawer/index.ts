@@ -218,7 +218,8 @@ class Drawer implements DrawerInterface {
 
     _destroyBackdropEl() {
         if (this._visible) {
-            document.querySelector('[drawer-backdrop]').remove();
+            const el = document.querySelector('[drawer-backdrop]');
+            if (el) { el.remove() };
         }
     }
 
@@ -247,6 +248,12 @@ class Drawer implements DrawerInterface {
                     base: ['left-0', 'top-0'],
                     active: ['transform-none'],
                     inactive: ['-translate-x-full'],
+                };
+            case 'left-edge':
+                return {
+                    base: ['left-0', 'top-0'],
+                    active: ['transform-none'],
+                    inactive: ['-translate-x-full', this._options.edgeOffset],
                 };
             case 'bottom-edge':
                 return {
