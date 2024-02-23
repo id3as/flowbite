@@ -50,6 +50,7 @@
   ],
   "author": "Bergside Inc.",
   "scripts": {
+    "prepare": "npx tsc --outDir lib/cjs --baseUrl '.' --typeRoots '[]' && npx tsc --outDir lib/esm -m es6 --baseUrl '.' --typeRoots '[]'",
     "start": "NODE_ENV=development run-p start:*",
     "start:hugo": "hugo server -D",
     "start:webpack": "webpack --mode=development --watch",
